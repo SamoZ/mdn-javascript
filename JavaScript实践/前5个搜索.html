@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+    </head>
+    <body>
+        <p>显示前5个搜索内容</p>
+        <div id="proposal" style="display: none;">
+            <ul>
+                <li>将输入到搜索框中的当前值添加到数组的开头</li>
+                <li>删除数组末尾的当前值</li>
+            </ul>
+        </div>
+        <div class="output" style="min-height: 150px;">
+            <input type="text" /><button>Search</button>
+            <ul></ul>
+        </div>
+
+        <textarea name="code" id="code" cols="60" rows="20">
+    var list = document.querySelector('.output ul');
+    var searchInput = document.querySelector('.output input');
+    var searchBtn = document.querySelector('.output button');
+
+    list.innerHTML = '';
+
+    var myHistory = [];
+
+    searchBtn.onclick = function() {
+        // 如果搜索框不为空，我们则将搜索词添加到开头
+        if (searchInput.value !== '') {
+            // number1
+
+            // 清空显示的搜索关键词，防止显示
+            // 每次输入搜索词都会重新生成显示的内容
+            list.innerHTML = '';
+
+            // 通过循环遍历，显示所有的搜索关键词
+            for (var i = 0; i < myHistory.length; i++) {
+                var itemText = myHistory[i];
+                var listItem = document.createElement('li');
+                listItem.textContent = itemText;
+                list.appendChild(listItem);
+            }
+
+            if (myHistory.length >= 5) {
+                // number2
+
+            }
+
+            // 清空并聚焦到搜索框，准备下一次的搜索
+            searchInput.value = '';
+            searchInput.focus();
+        }
+    }
+    </textarea
+        >
+        <div class="playable-buttons">
+            <input type="button" value="Reset" id="reset" />
+            <input type="button" value="Show solution" id="solution" />
+            <input type="button" value="suggest" id="suggest" />
+        </div>
+
+        <script>
+            var textarea = document.getElementById('code');
+            var proposal = document.getElementById('proposal');
+            var reset = document.getElementById('reset');
+            var solution = document.getElementById('solution');
+            var suggest = document.getElementById('suggest');
+            var code = textarea.value;
+
+            function updateCode() {
+                eval(textarea.value);
+            }
+
+            reset.addEventListener('click', function() {
+                textarea.value = code;
+                updateCode();
+            });
+
+            solution.addEventListener('click', function() {
+                textarea.value = jsSolution;
+                updateCode();
+            });
+
+            suggest.addEventListener('click', function() {
+                if (proposal.style.display === 'none') {
+                    proposal.style.display = 'block';
+                } else {
+                    proposal.style.display = 'none';
+                }
+            });
+
+            var jsSolution = `    var list = document.querySelector('.output ul');
+    var searchInput = document.querySelector('.output input');
+    var searchBtn = document.querySelector('.output button');
+
+    list.innerHTML = '';
+
+    var myHistory = [];
+
+    searchBtn.onclick = function() {
+        if(searchInput.value !== '') {
+            myHistory.unshift(searchInput.value);
+
+            list.innerHTML = '';
+
+            for(var i = 0; i < myHistory.length; i++) {
+                var itemText = myHistory[i];
+                var listItem = document.createElement('li');
+                listItem.textContent = itemText;
+                list.appendChild(listItem);
+            }
+
+            if(myHistory.length >= 5) {
+                myHistory.pop();
+            }
+
+            searchInput.value = '';
+            searchInput.focus();
+        }
+    }
+        `;
+
+            textarea.addEventListener('input', updateCode);
+            window.addEventListener('load', updateCode);
+        </script>
+    </body>
+</html>

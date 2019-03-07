@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>split() 在技术上是一个字符串方法，而不是一个数组方法</p>
+    <p>控制台查看</p>
+    <script>
+        var myData = 'Manchester,London,Liverpool,Birmingham,Leeds,Carlisle';
+        // split() 将字符串转换为数组
+        var myArray = myData.split(',');
+        console.log('split() 方法：');
+        console.log(myArray);
+        // join() 将数组转换成字符串
+        var myNewString = myArray.join(',');
+        console.log('join() 方法：');
+        console.log(myNewString);
+        // toString() 将数组转换成字符串
+        var dogNames = ["Rocket","Flash","Bella","Slugger"];
+        console.log('toString() 方法：');
+        console.log(dogNames.toString());
+    </script>
+</body>
+</html>
+

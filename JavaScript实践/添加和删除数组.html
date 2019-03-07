@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+    </head>
+    <body>
+        <p>添加和删除数组</p>
+        <p>控制台查看</p>
+
+        <script>
+            var myArray = [
+                'Manchester',
+                'London',
+                'Liverpool',
+                'Birmingham',
+                'Leeds',
+                'Carlisle'
+            ];
+
+            // push() 方法添加一个或多个要添加到数组末尾的元素
+            console.log('push() 方法：');
+            myArray.push('Cardiff');
+            console.log(myArray);
+            myArray.push('Bradford', 'Brighton');
+            console.log(myArray);
+            console.log('-------');
+            var newLength = myArray.push('Bristol');
+            console.log(myArray);
+            console.log(newLength);
+
+            // pop() 方法从数组中删除最后一个元素
+            myArray.pop();
+            console.log('pop() 方法：');
+            console.log(myArray);
+            var removedItem = myArray.pop();
+            console.log(myArray);
+            console.log(removedItem);
+
+            // unshift() 方法添加一个或多个要添加到数组开始的元素
+            myArray.unshift('Edinburgh');
+            console.log('unshift() 方法：');
+            console.log(myArray);
+
+            // shift() 方法从数组中删除第一个元素
+            var removedItem = myArray.shift();
+            console.log('shift() 方法：')
+            console.log(myArray);
+            console.log(removedItem);
+        </script>
+    </body>
+</html>

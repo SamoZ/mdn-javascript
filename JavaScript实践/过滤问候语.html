@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+    </head>
+    <body>
+        <p>显示出包含 Christmas 的段落</p>
+        <div id="proposal" class="proposal" style="display: none;">
+            <ul>
+                <li>判断出消息中是否含有 Christmas ----indexOf</li>
+            </ul>
+        </div>
+        <div class="output" style="min-height: 125px;">
+            <ul></ul>
+        </div>
+
+        <textarea name="code" id="code" cols="60" rows="22">
+        var list = document.querySelector('.output ul');
+        list.innerHTML = '';
+        var greetings = [
+            'Happy Birthday!',
+            'Merry Christmas my love',
+            'A happy Christmas to all the family',
+            "You're all I want for Christmas",
+            'Get well soon'
+        ];
+
+        for (var i = 0; i < greetings.length; i++) {
+            var input = greetings[i];
+            // 在下面的条件编写你的代码
+            if (greetings[i]) {
+                var result = input;
+                var listItem = document.createElement('li');
+                listItem.textContent = result;
+                list.appendChild(listItem);
+            }
+        }
+        </textarea>
+
+        <div class="playable-buttons">
+            <input type="button" value="Reset" id="reset" />
+            <input type="button" value="Show solution" id="solution" />
+            <input type="button" value="Suggest" id="suggest" />
+        </div>
+
+        <script>
+            var textarea = document.getElementById('code');
+            var proposal = document.getElementById('proposal');
+            var reset = document.getElementById('reset');
+            var solution = document.getElementById('solution');
+            var suggest = document.getElementById('suggest');
+            var code = textarea.value;
+
+            function updateCode() {
+                eval(textarea.value);
+            }
+
+            reset.addEventListener('click', function() {
+                textarea.value = code;
+                updateCode();
+            });
+
+            solution.addEventListener('click', function() {
+                textarea.value = jsSolution;
+                updateCode();
+            });
+
+            suggest.addEventListener('click', function() {
+                if (proposal.style.display === 'none') {
+                    proposal.style.display = 'block';
+                } else {
+                    proposal.style.display = 'none';
+                }
+            });
+
+            var jsSolution = `        var list = document.querySelector('.output ul');
+        list.innerHTML = '';
+        var greetings = [
+            'Happy Birthday!',
+            'Merry Christmas my love',
+            'A happy Christmas to all the family',
+            "You're all I want for Christmas",
+            'Get well soon'
+        ];
+
+        for (var i = 0; i < greetings.length; i++) {
+            var input = greetings[i];
+            if (greetings[i].indexOf('Christmas') !== -1) {
+                var result = input;
+                var listItem = document.createElement('li');
+                listItem.textContent = result;
+                list.appendChild(listItem);
+            }
+        }`;
+
+            textarea.addEventListener('input', updateCode);
+            window.addEventListener('load', updateCode);
+        </script>
+    </body>
+</html>

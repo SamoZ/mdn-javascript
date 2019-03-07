@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+    </head>
+    <body>
+        <p>打印产品和价格</p>
+        <div id="proposal" style="display: none;">
+            <ul>
+                <li>先将字符串储存为数组</li>
+                <li>for 循环</li>
+                <li>total 为价格总和</li>
+                <li>最终显示为 Shoes - $23.99</li>
+            </ul>
+        </div>
+        <div class="output" style="min-height: 150px;">
+            <ul></ul>
+            <p></p>
+        </div>
+
+        <textarea name="code" id="code" cols="60" rows="25">
+    var list = document.querySelector('.output ul');
+    var totalBox = document.querySelector('.output p');
+    var total = 0;
+    list.innerHTML = '';
+    totalBox.textContent = '';
+    // number1 
+                'Underpants:6.99'
+                'Socks:5.99'
+                'T-shirt:14.99'
+                'Trousers:31.99'
+                'Shoes:23.99';
+    
+    for (var i = 0; i <= 0; i++) { // number2
+        // number3
+
+        // number4
+
+        // number5
+        itemText = 0;
+
+        var listItem = document.createElement('li');
+        listItem.textContent = itemText;
+        list.appendChild(listItem);
+    }
+
+    totalBox.textContent = 'Total: $' + total.toFixed(2);
+    </textarea
+        >
+
+        <div class="playable-buttons">
+            <input type="button" value="Reset" id="reset" />
+            <input type="button" value="Show solution" id="solution" />
+            <input type="button" value="Suggest" id="suggest" />
+        </div>
+
+        <script>
+            var textarea = document.getElementById('code');
+            var proposal = document.getElementById('proposal');
+            var reset = document.getElementById('reset');
+            var solution = document.getElementById('solution');
+            var suggest = document.getElementById('suggest');
+            var code = textarea.value;
+
+            function updateCode() {
+                eval(textarea.value);
+            }
+
+            reset.addEventListener('click', function() {
+                textarea.value = code;
+                updateCode();
+            });
+
+            solution.addEventListener('click', function() {
+                textarea.value = jsSolution;
+                updateCode();
+            });
+
+            suggest.addEventListener('click', function() {
+                if (proposal.style.display === 'none') {
+                    proposal.style.display = 'block';
+                } else {
+                    proposal.style.display = 'none';
+                }
+            });
+
+            var jsSolution = `    var list = document.querySelector('.output ul');
+    var totalBox = document.querySelector('.output p');
+    var total = 0;
+    list.innerHTML = '';
+    totalBox.textContent = '';
+
+    var products = ['Underpants:6.99',
+                    'Socks:5.99',
+                    'T-shirt:14.99',
+                    'Trousers:31.99',
+                    'Shoes:23.99'];
+
+    for(var i = 0; i < products.length; i++) {
+    var subArray = products[i].split(':');
+    var name = subArray[0];
+    var price = Number(subArray[1]);
+    total += price;
+    itemText = name + ' — $' + price;
+
+    var listItem = document.createElement('li');
+    listItem.textContent = itemText;
+    list.appendChild(listItem);
+    }
+
+    totalBox.textContent = 'Total: $' + total.toFixed(2);
+        `;
+
+            textarea.addEventListener('input', updateCode);
+            window.addEventListener('load', updateCode);
+        </script>
+    </body>
+</html>

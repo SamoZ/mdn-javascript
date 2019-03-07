@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>将下面的地名改为首字母大写，其他全部为小写</p>
+    <div id="proposal" class="proposal" style="display: none;">
+        <ul>
+            <li>全部变成小写储存到新的变量----toLowerCase</li>
+            <li>获取字符串的第一个字母----slice</li>
+            <li>将新变量的第一个字母替换成大写----replace</li>
+        </ul>
+    </div>
+    <div class="output" style="min-height: 125px;">
+        <ul></ul>
+    </div>
+
+    <textarea name="code" id="code" cols="70" rows="15">
+    var list = document.querySelector('.output ul');
+    list.innerHTML = '';
+    var cities = ['lonDon', 'ManCHESTer', 'BiRmiNGHAM', 'liVERpoOl'];
+    for (var i = 0; i < cities.length; i++) {
+        var input = cities[i];
+        // 在下面编写你的代码
+
+        var result = input;
+        var listItem = document.createElement('li');
+        listItem.textContent = result;
+        list.appendChild(listItem);
+    }
+    </textarea>
+
+    <div class="playable-buttons">
+        <input type="button" value="Reset" id="reset">
+        <input type="button" value="Show solution" id="solution">
+        <input type="button" value="Suggest" id="suggest" />
+    </div>
+    
+    <script>
+        var textarea = document.getElementById('code');
+        var proposal = document.getElementById('proposal');
+        var reset = document.getElementById('reset');
+        var solution = document.getElementById('solution');
+        var suggest = document.getElementById('suggest');
+        var code = textarea.value;
+
+        function updateCode() {
+            eval(textarea.value);
+        }
+
+        reset.addEventListener('click', function() {
+            textarea.value = code;
+            updateCode();
+        })
+
+        solution.addEventListener('click', function() {
+            textarea.value = jsSolution;
+            updateCode();
+        });
+
+        suggest.addEventListener('click', function() {
+            if (proposal.style.display === 'none') {
+                proposal.style.display = 'block';
+            } else {
+                proposal.style.display = 'none';
+            }
+        });
+
+        var jsSolution = `    var list = document.querySelector('.output ul');
+    list.innerHTML = '';
+    var cities = ['lonDon', 'ManCHESTer', 'BiRmiNGHAM', 'liVERpoOl'];
+    for (var i = 0; i < cities.length; i++) {
+        var input = cities[i];
+        var lower = input.toLowerCase();
+        var firstLetter = lower.slice(0, 1);
+        var input = lower.replace(firstLetter, firstLetter.toUpperCase());
+        var result = input;
+        var listItem = document.createElement('li');
+        listItem.textContent = result;
+        list.appendChild(listItem);
+    }
+        `;
+
+        textarea.addEventListener('input', updateCode);
+        window.addEventListener('load', updateCode);
+    </script>
+</body>
+</html>
