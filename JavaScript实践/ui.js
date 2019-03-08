@@ -1,6 +1,6 @@
 document.getElementById('cn').onclick = () => {
     document.title = '笑话生成器';
-    document.getElementById('lbl-customnane').textContent =
+    document.getElementById('lbl-customname').textContent =
         '请输入自定义的名字：';
     document.getElementById('lbl-cn').textContent = '中国';
     document.getElementById('lbl-us').textContent = '美国';
