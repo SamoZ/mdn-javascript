@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>主题颜色选择</p>
+    <div id="proposal" style="display: none;">
+        <ul>
+            <li></li>
+        </ul>
+    </div>
+    <div class="output" style="height: 300px;">
+        <label for="theme">Select theme</label>
+        <select name="theme" id="theme">
+            <option value="white">White</option>
+            <option value="black">Black</option>
+            <option value="purple">Purple</option>
+            <option value="yellow">Yellow</option>
+            <option value="psychedelic">Psychedelic</option>
+        </select>
+
+        <h1>This is my website</h1>
+    </div>
+
+    <hr>
+
+    <textarea name="code" id="code" cols="60" rows="20">
+    var select = document.querySelector('select');
+    var outputBg = document.querySelector('.output');
+
+    select.onchange(function() {
+        var choice = select.value;
+
+        // 编写你的代码
+
+    });
+
+    function update(bgColor, textColor) {
+        outputBg.style.backgroundColor = bgColor;
+        outputBg.style.color = textColor;
+    }
+    </textarea>
+
+    <div class="playable-buttons">
+        <input type="button" value="Reset" id="reset">
+        <input type="button" value="Show solution" id="solution">
+        <input type="button" value="suggest" id="suggest">
+    </div>
+
+    <script>
+        var textarea = document.getElementById('code');
+        var proposal = document.getElementById('proposal');
+        var reset = document.getElementById('reset');
+        var solution = document.getElementById('solution');
+        var suggest = document.getElementById('suggest');
+        var code = textarea.value;
+
+        function updateCode() {
+            eval(textarea.value);
+        }
+
+        reset.addEventListener('click', function() {
+            textarea.value = code;
+            updateCode();
+        })
+
+        solution.addEventListener('click', function() {
+            textarea.value = jsSolution;
+            updateCode();
+        })
+
+        suggest.addEventListener('click', function() {
+
+        })
+
+        var jsSolution = `    var select = document.querySelector('select');
+    var html = document.querySelector('.output');
+
+    select.onchange = function() {
+    var choice = select.value;
+
+    switch(choice) {
+        case 'black':
+        update('black','white');
+        break;
+        case 'white':
+        update('white','black');
+        break;
+        case 'purple':
+        update('purple','white');
+        break;
+        case 'yellow':
+        update('yellow','darkgray');
+        break;
+        case 'psychedelic':
+        update('lime','purple');
+        break;
+    }
+    }
+
+    function update(bgColor, textColor) {
+    html.style.backgroundColor = bgColor;
+    html.style.color = textColor;
+    }
+        `;
+
+        textarea.addEventListener('input', updateCode);
+        window.addEventListener('load', updateCode);
+    </script>
+</body>
+</html>
