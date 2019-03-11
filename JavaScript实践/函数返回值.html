@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input {
+            font-size: 2em;
+            margin: 10px 1px 0;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" class="numberInput">
+    <p></p>
+
+    <script>
+        var input = document.querySelector('.numberInput')
+        var para = document.querySelector('p');
+
+        function squared(num) {
+            return num * num;
+        }
+
+        function cubed(num) {
+            return num * num * num;
+        }
+
+        function factorial(num) {
+            var x = num;
+            while(x > 1) {
+                num *= x - 1;
+                x--;
+            }
+            return num;
+        }
+
+        input.onchange = function() {
+            var num = input.value;
+            if (isNaN(num)) {
+                para.textContent = 'You need to enter a number!';
+            } else {
+                para.textContent = num + ' 平方 is ' + squared(num) + '. ' +
+                                   num + ' 立方 is ' + cubed(num) + '. ' +
+                                   num + ' 阶乘 is ' + factorial(num) + '. ';
+            }
+        }
+    </script>
+</body>
+</html>

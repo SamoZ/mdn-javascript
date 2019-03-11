@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>启动倒计时</p>
+    <p>要求</p>
+    <ul>
+        <li>如果数字是 10，打印 "Countdown 10" 到段落</li>
+        <li>如果数字是 0，打印 "Blast off!" 到段落</li>
+        <li>使用 for、while、do...while 三种循环</li>
+    </ul>
+    <div class="output" style="height: 350px; overflow-y: scroll;"></div>
+    <textarea name="code" id="code" cols="60" rows="20">
+    var output = document.querySelector('.output');
+    output.innerHTML = '';
+
+    // var i = 10;
+
+    // var para = document.createElement('p');
+    // para.innerHTML = ;
+    // output.appendChild(para);
+    </textarea>
+
+    <div class="playable-buttons">
+        <input type="button" value="Reset" id="reset">
+        <input type="button" value="Show Solution" id="solution">
+    </div>
+
+    <script>
+        var textarea = document.getElementById('code');
+        var reset = document.getElementById('reset');
+        var solution = document.getElementById('solution');
+        var code = textarea.value;
+
+        function updateCode() {
+            eval(textarea.value);
+        }
+
+        reset.addEventListener('click', function() {
+            textarea.value = code;
+            updateCode();
+        })
+
+        solution.addEventListener('click', function() {
+            textarea.value = jsSolution;
+            updateCode();
+        })
+
+        var jsSolution = `    var output = document.querySelector('.output');
+    output.innerHTML = '';
+
+    var i = 10;
+
+    while(i >= 0) {
+        var para = document.createElement('p');
+        if(i === 10) {
+            para.textContent = 'Countdown ' + i;
+        } else if(i === 0) {
+            para.textContent = 'Blast off!';
+        } else {
+            para.textContent = i;
+        }
+
+        output.appendChild(para);
+
+        i--;
+    }
+        `;
+
+        textarea.addEventListener('input', updateCode);
+        window.addEventListener('load', updateCode);
+    </script>
+</body>
+</html>

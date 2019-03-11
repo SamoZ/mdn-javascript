@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>来宾列表</p>
+    <p>要求</p>
+    <ul>
+        <li>来宾中包含 Phil 或 Lola，则不允许进来</li>
+        <li>使用逗号和空格连接</li>
+        <li>结尾处用句号(提示：使用slice)</li>
+    </ul>
+    <div class="output" style="height: 150px;">
+        <p class="admitted"></p>
+        <p class="refused"></p>
+    </div>
+
+    <textarea name="code" id="code" cols="90" rows="20">
+    var people = ['Chris', 'Anne', 'Colin', 'Terri', 'Phil', 'Lola', 'Sam', 'Kay', 'Bruce'];
+    var admitted = document.querySelector('.admitted');
+    var refused = document.querySelector('.refused');
+    admitted.textContent = 'Admit：';
+    refused.textContent = 'Refused：';
+    
+    // var i = 0;
+
+    // refused.textContent += ;
+    // admitted.textContent += ;
+    </textarea>
+
+    <div class="playable-buttons">
+        <input type="button" value="Reset" id="reset">
+        <input type="button" value="Show solution" id="solution">
+    </div>
+
+    <script>
+        var textarea = document.getElementById('code');
+        var reset = document.getElementById('reset');
+        var solution = document.getElementById('solution');
+        var code = textarea.value;
+
+        function updateCode() {
+            eval(textarea.value);
+        }
+
+        reset.addEventListener('click', function() {
+            textarea.value = code;
+            updateCode();
+        })
+
+        solution.addEventListener('click', function() {
+            textarea.value = jsSolution;
+            updateCode();
+        })
+
+        var jsSolution = `    var people = ['Chris', 'Anne', 'Colin', 'Terri', 'Phil', 'Lola', 'Sam', 'Kay', 'Bruce'];
+
+    var admitted = document.querySelector('.admitted');
+    var refused = document.querySelector('.refused');
+
+    var i = 0;
+
+    do {
+        if(people[i] === 'Phil' || people[i] === 'Lola') {
+            refused.textContent += people[i] + ', ';
+        } else {
+            admitted.textContent += people[i] + ', ';
+        }
+        i++;
+    } while(i < people.length);
+
+    refused.textContent = refused.textContent.slice(0,refused.textContent.length-2) + '.';
+    admitted.textContent = admitted.textContent.slice(0,admitted.textContent.length-2) + '.';
+        `;
+
+        textarea.addEventListener('input', updateCode);
+        window.addEventListener('load', updateCode);
+    </script>
+</body>
+</html>
