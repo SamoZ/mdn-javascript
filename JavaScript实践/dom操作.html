@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+        <style>
+            .highlight {
+                color: #fff;
+                background-color: #000;
+                padding: 10px;
+                width: 250px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <img
+                src="../img/dinosaur.png"
+                alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth."
+            />
+            <p>
+                Here we will add a link to the
+                <a href="https://www.mozilla.org/">Mozilla homepage</a>
+            </p>
+        </section>
+
+        <script>
+            var link = document.querySelector('a');
+            var section = document.querySelector('section');
+            var para = document.createElement('p');
+            var linkPara = document.querySelector('p');
+
+            link.textContent = 'Mozilla Developer Network';
+            link.href = 'https://developer.mozilla.org';
+
+            para.textContent = 'We hope you enjoyed the ride.';
+            para.setAttribute('class', 'highlight');
+
+            section.appendChild(para);
+
+            var text = document.createTextNode(' -- the premier source for web development knowledge.');
+            linkPara.appendChild(text);
+
+            // section.removeChild(linkPara);
+            linkPara.parentNode.removeChild(linkPara);
+        </script>
+    </body>
+</html>

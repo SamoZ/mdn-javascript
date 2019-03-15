@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <canvas class="myCanvas">
+        <p>你的浏览器不支持canvas</p>
+    </canvas>
+
+    <script>
+        var canvas = document.querySelector('.myCanvas');
+        var width = canvas.width = window.innerWidth;
+        var height = canvas.height = window.innerHeight;
+        var ctx = canvas.getContext('2d');
+
+        ctx.fillStyle = 'rgb(0, 0, 0)';
+        ctx.fillRect(0, 0, width, height);
+
+        // 绘制红色矩形
+        // ctx.fillStyle = 'rgb(255, 0, 0)';
+        // ctx.fillRect(50, 50, 100, 150);
+
+        // 绘制绿色矩形
+        // ctx.fillStyle = 'rgb(0, 255, 0)';
+        // ctx.fillRect(75, 75, 100, 100);
+
+        // 绘制紫色矩形
+        // ctx.fillStyle = 'rgba(255, 0, 255, 0.75)';
+        // ctx.fillRect(25, 100, 175, 50);
+
+        // 绘制白色边框
+        // ctx.strokeStyle = 'rgb(255, 255, 255)';
+        // ctx.lineWidth = 5;
+        // ctx.strokeRect(25, 25, 175, 200);
+
+        // 绘制三角
+        // function degToRad(degrees) {
+        //     return degrees * Math.PI / 180;
+        // }
+        // ctx.fillStyle = 'rgb(255, 0, 0)';
+        // ctx.beginPath();
+        // ctx.moveTo(50, 50);
+        // ctx.lineTo(150, 50);
+        // var triHeight = 50 * Math.tan(degToRad(60));
+        // ctx.lineTo(100, 50+triHeight);
+        // ctx.lineTo(50, 50);
+        // ctx.fill();
+
+        // 画圆
+        // ctx.fillStyle = 'rgb(0, 0, 255)';
+        // ctx.beginPath();
+        // ctx.arc(150, 106, 50, degToRad(0), degToRad(360), false);
+        // ctx.fill();
+
+        // ctx.fillStyle = 'yellow';
+        // ctx.beginPath();
+        // ctx.arc(200, 106, 50, degToRad(-45), degToRad(45), true);
+        // ctx.lineTo(200, 106);
+        // ctx.fill();
+
+        // 绘制文本
+        // ctx.strokeStyle = '#fff';
+        // ctx.lineWidth = 1;
+        // ctx.font = '36px arial';
+        // ctx.strokeText('Canvas text', 50, 50);
+
+        // ctx.fillStyle = 'red';
+        // ctx.font = '48px georgia';
+        // ctx.fillText('Canvas text', 50, 150);
+
+        // 将图像绘制到画布
+        var image = new Image();
+        image.src = '../img/firefox.png';
+        image.onload = function() {
+            ctx.drawImage(image, 20, 20, 185, 175, 50, 50, 185, 175);
+        }
+    </script>
+</body>
+</html>

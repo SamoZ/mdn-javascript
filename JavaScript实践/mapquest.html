@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
+    <style>
+        #map {
+            width: 600px;
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+    <script>
+        var L;
+        window.onload = function() {
+            L.mapquest.key = 'zwIP5XgnZrqG2OGmp9gpoaUV6Evt67Zo';
+
+            var map = L.mapquest.map('map', {
+                center: [53.480759, -2.242631],
+                layers: L.mapquest.tileLayer('map'),
+                zoom: 12
+            });
+
+            map.addControl(L.mapquest.control({position: 'bottomright'}));
+            // map.addControl(L.mapquest.searchControl());
+            // map.addControl(L.mapquest.satelliteControl());
+
+            L.marker([53.480759, -2.242631], {
+                icon: L.mapquest.icons.marker({
+                    primaryColor: '#22407F',
+                    secondaryColor: '#3B5998',
+                    shadow: true,
+                    size: 'md',
+                    symbol: 'A'
+                })
+            })
+            .bindPopup('This is Manchester!')
+            .addTo(map)
+        }
+    </script>
+</body>
+</html>
